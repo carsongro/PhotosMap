@@ -8,17 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		B542E1D028885D4E000D96B8 /* PhotosMapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1CF28885D4E000D96B8 /* PhotosMapApp.swift */; };
-		B542E1D228885D4E000D96B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1D128885D4E000D96B8 /* ContentView.swift */; };
 		B542E1D428885D4E000D96B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B542E1D328885D4E000D96B8 /* Assets.xcassets */; };
 		B542E1D728885D4E000D96B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B542E1D628885D4E000D96B8 /* Preview Assets.xcassets */; };
+		B542E1DE28885D71000D96B8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1DD28885D71000D96B8 /* MapView.swift */; };
+		B542E1E028885D91000D96B8 /* PhotoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1DF28885D91000D96B8 /* PhotoListView.swift */; };
+		B542E1E228885DA2000D96B8 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1E128885DA2000D96B8 /* AlbumView.swift */; };
+		B542E1E428885DB1000D96B8 /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1E328885DB1000D96B8 /* PhotoDetailView.swift */; };
+		B542E1E628885DC4000D96B8 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1E528885DC4000D96B8 /* MapViewModel.swift */; };
+		B542E1E828885DD2000D96B8 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1E728885DD2000D96B8 /* Photo.swift */; };
+		B542E1EA28885DE2000D96B8 /* PhotoCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1E928885DE2000D96B8 /* PhotoCollection.swift */; };
+		B542E1EC28885DED000D96B8 /* Wiggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1EB28885DED000D96B8 /* Wiggle.swift */; };
+		B542E1EE28885DFB000D96B8 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1ED28885DFB000D96B8 /* LocationFetcher.swift */; };
+		B542E1F028885E08000D96B8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1EF28885E08000D96B8 /* ImagePicker.swift */; };
+		B542E1F228885E10000D96B8 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1F128885E10000D96B8 /* ImageSaver.swift */; };
+		B542E1F428885E22000D96B8 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1F328885E22000D96B8 /* FileManager-DocumentsDirectory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B542E1CC28885D4E000D96B8 /* PhotosMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B542E1CF28885D4E000D96B8 /* PhotosMapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosMapApp.swift; sourceTree = "<group>"; };
-		B542E1D128885D4E000D96B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B542E1D328885D4E000D96B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B542E1D628885D4E000D96B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B542E1DD28885D71000D96B8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		B542E1DF28885D91000D96B8 /* PhotoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListView.swift; sourceTree = "<group>"; };
+		B542E1E128885DA2000D96B8 /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
+		B542E1E328885DB1000D96B8 /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
+		B542E1E528885DC4000D96B8 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		B542E1E728885DD2000D96B8 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		B542E1E928885DE2000D96B8 /* PhotoCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollection.swift; sourceTree = "<group>"; };
+		B542E1EB28885DED000D96B8 /* Wiggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wiggle.swift; sourceTree = "<group>"; };
+		B542E1ED28885DFB000D96B8 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
+		B542E1EF28885E08000D96B8 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		B542E1F128885E10000D96B8 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		B542E1F328885E22000D96B8 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +74,18 @@
 			isa = PBXGroup;
 			children = (
 				B542E1CF28885D4E000D96B8 /* PhotosMapApp.swift */,
-				B542E1D128885D4E000D96B8 /* ContentView.swift */,
+				B542E1DD28885D71000D96B8 /* MapView.swift */,
+				B542E1DF28885D91000D96B8 /* PhotoListView.swift */,
+				B542E1E128885DA2000D96B8 /* AlbumView.swift */,
+				B542E1E328885DB1000D96B8 /* PhotoDetailView.swift */,
+				B542E1E528885DC4000D96B8 /* MapViewModel.swift */,
+				B542E1E728885DD2000D96B8 /* Photo.swift */,
+				B542E1E928885DE2000D96B8 /* PhotoCollection.swift */,
+				B542E1EB28885DED000D96B8 /* Wiggle.swift */,
+				B542E1ED28885DFB000D96B8 /* LocationFetcher.swift */,
+				B542E1EF28885E08000D96B8 /* ImagePicker.swift */,
+				B542E1F128885E10000D96B8 /* ImageSaver.swift */,
+				B542E1F328885E22000D96B8 /* FileManager-DocumentsDirectory.swift */,
 				B542E1D328885D4E000D96B8 /* Assets.xcassets */,
 				B542E1D528885D4E000D96B8 /* Preview Content */,
 			);
@@ -137,8 +170,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B542E1D228885D4E000D96B8 /* ContentView.swift in Sources */,
+				B542E1EC28885DED000D96B8 /* Wiggle.swift in Sources */,
+				B542E1E828885DD2000D96B8 /* Photo.swift in Sources */,
+				B542E1EE28885DFB000D96B8 /* LocationFetcher.swift in Sources */,
 				B542E1D028885D4E000D96B8 /* PhotosMapApp.swift in Sources */,
+				B542E1DE28885D71000D96B8 /* MapView.swift in Sources */,
+				B542E1E228885DA2000D96B8 /* AlbumView.swift in Sources */,
+				B542E1E428885DB1000D96B8 /* PhotoDetailView.swift in Sources */,
+				B542E1F428885E22000D96B8 /* FileManager-DocumentsDirectory.swift in Sources */,
+				B542E1F228885E10000D96B8 /* ImageSaver.swift in Sources */,
+				B542E1F028885E08000D96B8 /* ImagePicker.swift in Sources */,
+				B542E1E028885D91000D96B8 /* PhotoListView.swift in Sources */,
+				B542E1EA28885DE2000D96B8 /* PhotoCollection.swift in Sources */,
+				B542E1E628885DC4000D96B8 /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +314,8 @@
 				DEVELOPMENT_TEAM = HV69QD4SV2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs your camera to take photos.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to show it on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +345,8 @@
 				DEVELOPMENT_TEAM = HV69QD4SV2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs your camera to take photos.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to show it on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
