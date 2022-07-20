@@ -88,7 +88,7 @@ struct MapView: View {
                 }
             }
             .sheet(isPresented: $showSheet, onDismiss: saveImage) {
-                ImagePicker(sourceType: .photoLibrary, selectedImage: $newImage)
+                ImagePicker(sourceType: .camera, selectedImage: $newImage)
             }
             .sheet(isPresented: $showPhotoList) {
                 PhotoListView(photos: photoList.photoList).environmentObject(photos).environmentObject(photoList)
