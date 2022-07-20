@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct AlbumView: View {
+    @StateObject private var viewModel = AlbumViewModel()
+    
     @EnvironmentObject var photos: PhotoCollection
     @EnvironmentObject var photoList: PhotoList
-    
-    @State private var showImageView = false
-    @State private var tappedPhoto: Photo? = nil
-    @State private var selectedPhoto: Photo? = nil
-    @State private var showingEditor = false
-    @State private var showingDeleteConfirmation = false
     
     @Environment(\.dismiss) var dismiss
     
@@ -35,7 +31,7 @@ struct AlbumView: View {
             LazyVGrid(columns: columns, alignment: .center, spacing: 20) {
                 ForEach(photos.items) { photo in
                     ZStack {
-                        if showingEditor {
+                        if viewModel.showingEditor {
                             ZStack {
                                 photo.image?
                                     .resizable()
@@ -52,8 +48,8 @@ struct AlbumView: View {
                                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 200)
                             }
                             .onTapGesture {
-                                selectedPhoto = photo
-                                showingDeleteConfirmation = true
+                                viewModel.selectedPhoto = photo
+                                viewModel.showingDeleteConfirmation = true
                             }
                             .wiggling()
                         } else {
@@ -68,13 +64,13 @@ struct AlbumView: View {
                             }
                         }
                     }
-                    .alert("Are you sure you want to delete this photo?", isPresented: $showingDeleteConfirmation) {
+                    .alert("Are you sure you want to delete this photo?", isPresented: $viewModel.showingDeleteConfirmation) {
                         Button("Cancel", role: .cancel) {
-                            showingDeleteConfirmation = false
-                            showingEditor = true
+                            viewModel.showingDeleteConfirmation = false
+                            viewModel.showingEditor = true
                         }
                         Button("Delete", role: .destructive) {
-                            deleteImage(selectedPhoto ?? Photo(name: ""))
+                            deleteImage(viewModel.selectedPhoto ?? Photo(name: ""))
                         }
                     }
                 }
@@ -82,9 +78,9 @@ struct AlbumView: View {
         }
         .toolbar {
             Button {
-                showingEditor.toggle()
+                viewModel.showingEditor.toggle()
             } label: {
-                Text(showingEditor ? "Done" : "Edit")
+                Text(viewModel.showingEditor ? "Done" : "Edit")
             }
         }
         .navigationTitle("Photo Album")
@@ -99,14 +95,10 @@ struct AlbumView: View {
             photoList.photoList.remove(at: photoListIndex)
         }
         if photos.items.isEmpty {
-            showingEditor = false
+            viewModel.showingEditor = false
         } else {
-            showingEditor = true
+            viewModel.showingEditor = true
         }
-    }
-    
-    func cancelDelete() {
-        showingDeleteConfirmation = false
     }
 }
 

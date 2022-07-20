@@ -22,6 +22,7 @@
 		B542E1F028885E08000D96B8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1EF28885E08000D96B8 /* ImagePicker.swift */; };
 		B542E1F228885E10000D96B8 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1F128885E10000D96B8 /* ImageSaver.swift */; };
 		B542E1F428885E22000D96B8 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542E1F328885E22000D96B8 /* FileManager-DocumentsDirectory.swift */; };
+		B5C0E41E2888BD9300E6499F /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0E41D2888BD9300E6499F /* AlbumViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		B542E1EF28885E08000D96B8 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B542E1F128885E10000D96B8 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		B542E1F328885E22000D96B8 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
+		B5C0E41D2888BD9300E6499F /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				B542E1DF28885D91000D96B8 /* PhotoListView.swift */,
 				B542E1E128885DA2000D96B8 /* AlbumView.swift */,
 				B542E1E328885DB1000D96B8 /* PhotoDetailView.swift */,
+				B5C0E41D2888BD9300E6499F /* AlbumViewModel.swift */,
 				B542E1E528885DC4000D96B8 /* MapViewModel.swift */,
 				B542E1E728885DD2000D96B8 /* Photo.swift */,
 				B542E1E928885DE2000D96B8 /* PhotoCollection.swift */,
@@ -180,6 +183,7 @@
 				B542E1F428885E22000D96B8 /* FileManager-DocumentsDirectory.swift in Sources */,
 				B542E1F228885E10000D96B8 /* ImageSaver.swift in Sources */,
 				B542E1F028885E08000D96B8 /* ImagePicker.swift in Sources */,
+				B5C0E41E2888BD9300E6499F /* AlbumViewModel.swift in Sources */,
 				B542E1E028885D91000D96B8 /* PhotoListView.swift in Sources */,
 				B542E1EA28885DE2000D96B8 /* PhotoCollection.swift in Sources */,
 				B542E1E628885DC4000D96B8 /* MapViewModel.swift in Sources */,

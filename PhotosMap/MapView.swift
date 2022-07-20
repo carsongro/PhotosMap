@@ -10,22 +10,11 @@ import SwiftUI
 
 struct MapView: View {
     @StateObject private var viewModel = MapViewModel()
-    @ObservedObject var photos = PhotoCollection()
-    @ObservedObject var photoList = PhotoList()
-    
-    @State private var newImage: UIImage?
-    @State private var showSheet = false
-    @State private var showPhotoList = false
-    @State private var spreadImages = false
-    @State private var selectedPhoto: Photo? = nil
-    
-    
-    let locationFetcher = LocationFetcher()
     
     var body: some View {
         NavigationView {
             ZStack {
-                Map(coordinateRegion: viewModel.regionWrapper.region, showsUserLocation: true, annotationItems: photos.items) { location in
+                Map(coordinateRegion: viewModel.regionWrapper.region, showsUserLocation: true, annotationItems: viewModel.photos.items) { location in
                     MapAnnotation(coordinate: location.location ?? CLLocationCoordinate2D()) {
                         VStack {
                             Image(uiImage: location.uiImage ?? UIImage())
@@ -42,7 +31,7 @@ struct MapView: View {
                         }
                         .onTapGesture {
                             viewModel.region = viewModel.regionWrapper.region.wrappedValue
-                            showPhotosInRange(location: location)
+                            viewModel.showPhotosInRange(location: location)
                         }
                     }
                 }
@@ -59,7 +48,7 @@ struct MapView: View {
                         Spacer()
                         
                         NavigationLink {
-                            AlbumView().environmentObject(photos).environmentObject(photoList)
+                            AlbumView().environmentObject(viewModel.photos).environmentObject(viewModel.photoList)
                         } label: {
                             Image(systemName: "folder")
                                 .padding()
@@ -72,9 +61,9 @@ struct MapView: View {
                         
                         
                         Button {
-                            locationFetcher.start()
-                            newImage = nil
-                            showSheet = true
+                            viewModel.locationFetcher.start()
+                            viewModel.newImage = nil
+                            viewModel.showSheet = true
                         } label: {
                             Image(systemName: "camera")
                                 .padding()
@@ -87,34 +76,13 @@ struct MapView: View {
                     }
                 }
             }
-            .sheet(isPresented: $showSheet, onDismiss: saveImage) {
-                ImagePicker(sourceType: .camera, selectedImage: $newImage)
+            .sheet(isPresented: $viewModel.showSheet, onDismiss: viewModel.saveImage) {
+                ImagePicker(sourceType: .camera, selectedImage: $viewModel.newImage)
             }
-            .sheet(isPresented: $showPhotoList) {
-                PhotoListView(photos: photoList.photoList).environmentObject(photos).environmentObject(photoList)
+            .sheet(isPresented: $viewModel.showPhotoList) {
+                PhotoListView(photos: viewModel.photoList.photoList).environmentObject(viewModel.photos).environmentObject(viewModel.photoList)
             }
         }
-    }
-    
-    func saveImage() {
-        guard let newImage = newImage else { return }
-        var newPhoto = Photo(name: "")
-        newPhoto.writeToSecureDirectory(uiImage: newImage)
-        if let location = self.locationFetcher.lastKnownLocation {
-            newPhoto.setLocation(location: location)
-        }
-        photos.append(newPhoto)
-    }
-    
-    func showPhotosInRange(location: Photo) {
-        // The commented out code filters the location based on the section of the map visible to the user, I instead opted to do it based on the distance from poinst relative to each other, but this is a cool way to do it as well! :)
-//        photoList = photos.items.filter({ photo in
-//            viewModel.region.center.longitude + viewModel.region.span.longitudeDelta > photo.longitude! && viewModel.region.center.latitude + viewModel.region.span.latitudeDelta > photo.latitude!
-//        })
-        photoList.photoList = photos.items.filter({ photo in
-            photo.latitude! < location.latitude! + 0.014 && photo.longitude! < location.longitude! + 0.014
-        })
-        showPhotoList = true
     }
 }
 
