@@ -75,3 +75,7 @@ class RegionWrapper: ObservableObject {
 
     @Published var flag = false
 }
+
+class PhotoList: ObservableObject {
+    @Published var photoList = [Photo]()
+}

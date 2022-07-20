@@ -9,12 +9,15 @@ import SwiftUI
 
 struct AlbumView: View {
     @EnvironmentObject var photos: PhotoCollection
+    @EnvironmentObject var photoList: PhotoList
     
     @State private var showImageView = false
     @State private var tappedPhoto: Photo? = nil
     @State private var selectedPhoto: Photo? = nil
     @State private var showingEditor = false
     @State private var showingDeleteConfirmation = false
+    
+    @Environment(\.dismiss) var dismiss
     
     let columns = [
         GridItem(.flexible()),
@@ -24,6 +27,11 @@ struct AlbumView: View {
     
     var body: some View {
         ScrollView {
+            if photos.items.isEmpty {
+                Text("Photo album is empty.")
+                    .font(.title.bold())
+                    .foregroundColor(.secondary)
+            }
             LazyVGrid(columns: columns, alignment: .center, spacing: 20) {
                 ForEach(photos.items) { photo in
                     ZStack {
@@ -50,7 +58,7 @@ struct AlbumView: View {
                             .wiggling()
                         } else {
                             NavigationLink {
-                                PhotoDetailView(photo: photo)
+                                PhotoDetailView(photo: photo).environmentObject(photos).environmentObject(photoList)
                             } label: {
                                 photo.image?
                                     .resizable()
@@ -86,6 +94,9 @@ struct AlbumView: View {
         if let photoIndex = photos.items.firstIndex(where: { $0.id == photo.id }) {
             photos.items[photoIndex].deleteFromSecureDirectory()
             photos.items.remove(at: photoIndex)
+        }
+        if let photoListIndex = photoList.photoList.firstIndex(where: { $0.id == photo.id }) {
+            photoList.photoList.remove(at: photoListIndex)
         }
         if photos.items.isEmpty {
             showingEditor = false

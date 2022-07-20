@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PhotoDetailView: View {
     @EnvironmentObject var photos: PhotoCollection
+    @EnvironmentObject var photoList: PhotoList
     @State private var showDeleteAlert = false
     
     @Environment(\.dismiss) var dismiss
@@ -55,6 +56,9 @@ struct PhotoDetailView: View {
         if let photoIndex = photos.items.firstIndex(where: { $0.id == photo.id }) {
             photos.items[photoIndex].deleteFromSecureDirectory()
             photos.items.remove(at: photoIndex)
+        }
+        if let photoListIndex = photoList.photoList.firstIndex(where: { $0.id == photo.id }) {
+            photoList.photoList.remove(at: photoListIndex)
         }
         showDeleteAlert = false
         dismiss()

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PhotoListView: View {
+    @EnvironmentObject var photoList: PhotoList
     var photos: [Photo]
     
     var body: some View {
@@ -16,7 +17,7 @@ struct PhotoListView: View {
                 LazyVGrid(columns: [GridItem(.flexible())], alignment: .center) {
                     ForEach(photos) { photo in
                         NavigationLink {
-                            PhotoDetailView(photo: photo)
+                            PhotoDetailView(photo: photo).environmentObject(photoList)
                         } label: {
                             Image(uiImage: photo.uiImage ?? UIImage())
                                 .resizable()

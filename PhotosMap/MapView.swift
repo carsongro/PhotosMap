@@ -11,13 +11,13 @@ import SwiftUI
 struct MapView: View {
     @StateObject private var viewModel = MapViewModel()
     @ObservedObject var photos = PhotoCollection()
+    @ObservedObject var photoList = PhotoList()
     
     @State private var newImage: UIImage?
     @State private var showSheet = false
     @State private var showPhotoList = false
     @State private var spreadImages = false
     @State private var selectedPhoto: Photo? = nil
-    @State private var photoList = Array<Photo>()
     
     
     let locationFetcher = LocationFetcher()
@@ -58,18 +58,16 @@ struct MapView: View {
                     HStack {
                         Spacer()
                         
-                        if !photos.items.isEmpty {
-                            NavigationLink {
-                                AlbumView().environmentObject(photos)
-                            } label: {
-                                Image(systemName: "folder")
-                                    .padding()
-                                    .background(.black.opacity(0.75))
-                                    .foregroundColor(.white)
-                                    .font(.title)
-                                    .clipShape(Circle())
-                                    .padding(.leading)
-                            }
+                        NavigationLink {
+                            AlbumView().environmentObject(photos).environmentObject(photoList)
+                        } label: {
+                            Image(systemName: "folder")
+                                .padding()
+                                .background(.black.opacity(0.75))
+                                .foregroundColor(.white)
+                                .font(.title)
+                                .clipShape(Circle())
+                                .padding(.leading)
                         }
                         
                         
@@ -90,10 +88,10 @@ struct MapView: View {
                 }
             }
             .sheet(isPresented: $showSheet, onDismiss: saveImage) {
-                ImagePicker(sourceType: .camera, selectedImage: $newImage)
+                ImagePicker(sourceType: .photoLibrary, selectedImage: $newImage)
             }
             .sheet(isPresented: $showPhotoList) {
-                PhotoListView(photos: photoList)
+                PhotoListView(photos: photoList.photoList).environmentObject(photos).environmentObject(photoList)
             }
         }
     }
@@ -113,7 +111,7 @@ struct MapView: View {
 //        photoList = photos.items.filter({ photo in
 //            viewModel.region.center.longitude + viewModel.region.span.longitudeDelta > photo.longitude! && viewModel.region.center.latitude + viewModel.region.span.latitudeDelta > photo.latitude!
 //        })
-        photoList = photos.items.filter({ photo in
+        photoList.photoList = photos.items.filter({ photo in
             photo.latitude! < location.latitude! + 0.014 && photo.longitude! < location.longitude! + 0.014
         })
         showPhotoList = true
