@@ -8,23 +8,23 @@
 import Foundation
 
 class PhotoCollection: ObservableObject {
+    
+    let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedPlaces")
     @Published var items = [Photo]() {
         didSet {
-            let encoder = JSONEncoder()
-            
-            if let encoded = try? encoder.encode(items) {
-                let url = getDocumentsDirectory().appendingPathComponent("photos.json")
-                try? encoded.write(to: url, options: [.atomicWrite, .completeFileProtection])
-            } else {
-                fatalError("Error")
+            do {
+                let data = try JSONEncoder().encode(items)
+                try data.write(to: savePath, options: [.atomicWrite, .completeFileProtection])
+            } catch {
+                print("Unable to save data")
             }
         }
     }
     
     init() {
 
-        let file = "photos.json"
-        let url = getDocumentsDirectory().appendingPathComponent(file)
+        let file = "SavedPlaces"
+        let url = getDocumentsDirectory().appendingPathComponent("SavedPlaces")
         
 //        self.items = []
         

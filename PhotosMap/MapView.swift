@@ -17,21 +17,24 @@ struct MapView: View {
                 Map(coordinateRegion: viewModel.regionWrapper.region, showsUserLocation: true, annotationItems: viewModel.photos.items) { location in
                     MapAnnotation(coordinate: location.location ?? CLLocationCoordinate2D()) {
                         VStack {
-                            Image(uiImage: location.uiImage ?? UIImage())
-                                .resizable()
-                                .cornerRadius(50)
-                                .padding(.all, 4)
-                                .frame(width: 90, height: 90)
-                                .background(.secondary)
-                                .scaledToFill()
-                                .clipShape(Circle())
-                                .padding(8)
-                                .clipped()
+                            NavigationLink {
+                                PhotoListView(photo: location).environmentObject(viewModel.photos)
+                            } label: {
+                                Image(uiImage: location.uiImage ?? UIImage())
+                                    .resizable()
+                                    .cornerRadius(50)
+                                    .padding(.all, 4)
+                                    .frame(width: 90, height: 90)
+                                    .background(.secondary)
+                                    .scaledToFill()
+                                    .clipShape(Circle())
+                                    .padding(8)
+                                    .clipped()
+                            }
                             
                         }
                         .onTapGesture {
                             viewModel.region = viewModel.regionWrapper.region.wrappedValue
-                            viewModel.showPhotosInRange(location: location)
                         }
                     }
                 }
@@ -78,9 +81,6 @@ struct MapView: View {
             }
             .sheet(isPresented: $viewModel.showSheet, onDismiss: viewModel.saveImage) {
                 ImagePicker(sourceType: .camera, selectedImage: $viewModel.newImage)
-            }
-            .sheet(isPresented: $viewModel.showPhotoList) {
-                PhotoListView(photos: viewModel.photoList.photoList).environmentObject(viewModel.photos).environmentObject(viewModel.photoList)
             }
         }
     }

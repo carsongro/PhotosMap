@@ -11,7 +11,6 @@ struct AlbumView: View {
     @StateObject private var viewModel = AlbumViewModel()
     
     @EnvironmentObject var photos: PhotoCollection
-    @EnvironmentObject var photoList: PhotoList
     
     @Environment(\.dismiss) var dismiss
     
@@ -54,7 +53,7 @@ struct AlbumView: View {
                             .wiggling()
                         } else {
                             NavigationLink {
-                                PhotoDetailView(photo: photo).environmentObject(photos).environmentObject(photoList)
+                                PhotoDetailView(photo: photo).environmentObject(photos)
                             } label: {
                                 photo.image?
                                     .resizable()
@@ -90,9 +89,6 @@ struct AlbumView: View {
         if let photoIndex = photos.items.firstIndex(where: { $0.id == photo.id }) {
             photos.items[photoIndex].deleteFromSecureDirectory()
             photos.items.remove(at: photoIndex)
-        }
-        if let photoListIndex = photoList.photoList.firstIndex(where: { $0.id == photo.id }) {
-            photoList.photoList.remove(at: photoListIndex)
         }
         if photos.items.isEmpty {
             viewModel.showingEditor = false

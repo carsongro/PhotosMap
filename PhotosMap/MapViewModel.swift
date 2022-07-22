@@ -63,17 +63,6 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         checkLocationAuthorization()
     }
     
-    func showPhotosInRange(location: Photo) {
-        // The commented out code filters the location based on the section of the map visible to the user, I instead opted to do it based on the distance from poinst relative to each other, but this is a cool way to do it as well! :)
-//        photoList = photos.items.filter({ photo in
-//            viewModel.region.center.longitude + viewModel.region.span.longitudeDelta > photo.longitude! && viewModel.region.center.latitude + viewModel.region.span.latitudeDelta > photo.latitude!
-//        })
-        photoList.photoList = photos.items.filter({ photo in
-            photo.latitude! < location.latitude! + 0.014 && photo.longitude! < location.longitude! + 0.014
-        })
-        showPhotoList = true
-    }
-    
     func saveImage() {
         guard let newImage = newImage else { return }
         var newPhoto = Photo(name: "")
