@@ -36,13 +36,9 @@ struct PhotoListView: View {
         .navigationTitle("Nearby Photos")
     }
     
-    func showPhotosInRangeTest(location: Photo) -> [Photo]{
-        // The commented out code filters the location based on the section of the map visible to the user, I instead opted to do it based on the distance from poinst relative to each other, but this is a cool way to do it as well! :)
-//        photoList = photos.items.filter({ photo in
-//            viewModel.region.center.longitude + viewModel.region.span.longitudeDelta > photo.longitude! && viewModel.region.center.latitude + viewModel.region.span.latitudeDelta > photo.latitude!
-//        })
+    func showPhotosInRangeTest(location: Photo) -> [Photo] {
         photos.items.filter({ photo in
-            photo.latitude! < location.latitude! + 0.014 && photo.longitude! < location.longitude! + 0.014
+            (photo.latitude! < location.latitude! + 0.014 && photo.latitude! > location.latitude! - 0.014) && (photo.longitude! < location.longitude! + 0.014 && photo.longitude! > location.longitude! - 0.014)
         })
     }
 }
